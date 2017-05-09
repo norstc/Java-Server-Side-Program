@@ -1,39 +1,65 @@
 <ui:composition template="/WEB-INF/templates/layout.xhtml" 
                 xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
         <h2>This a demo table</h2>
         <h:dataTable value="#{stockBean.stocks}" var="stock" border="2">
             <h:column>
                 <f:facet name="header">Stock ID</f:facet>
-                #{stock.stockId}
+                    #{stock.stockId}
             </h:column>
             <h:column>
                 <f:facet name="header">Stock Code</f:facet>
-                #{stock.stockCode}
+                    #{stock.stockCode}
             </h:column>
             <h:column>
                 <f:facet name="header">Stock Name</f:facet>
-                #{stock.stockName}
+                    #{stock.stockName}
             </h:column>
             <h:column>
                 <f:facet name="header">Current Price</f:facet>
-                #{stock.currentPrice}
+                    #{stock.currentPrice}
             </h:column>
             <h:column>
                 <f:facet name="header">AI Price</f:facet>
-                #{stock.aiPrice}
+                    #{stock.aiPrice}
             </h:column>
             <h:column>
                 <f:facet name="header">AI Roi</f:facet>
-                #{stock.aiRoi}
+                    #{stock.aiRoi}
             </h:column>
         </h:dataTable>
-        
+        <h3>使用primefaces</h3>
+        <p:dataGrid var="stock" value="#{stockBean.stocks}" columns="3" rows="12">
+            <p:column>
+                <p:panel header="#{stock.stockCode}">
+                    <h:panelGrid columns="1">
+                        <h:outputText value="#{stock.stockName}"/>
+                        <h:outputText value="预期收益：#{stock.aiRoi}"/>
+                    </h:panelGrid>
+                </p:panel>
+            </p:column>
+        </p:dataGrid>
+
+        <h3>primeface 的表格</h3>
+        <p:dataTable var="stock" value="#{stockBean.stocks}">
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="StockCode"/>
+                </f:facet>
+                <h:outputText value="#{stock.stockCode}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="StockName"/>
+                </f:facet>
+                <h:outputText value="#{stock.stockName}"/>
+            </p:column>
+        </p:dataTable>                                  
     </ui:define>
 </ui:composition>   
 
