@@ -5,13 +5,36 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
     <p:menu>
-        <p:submenu label="Resources">
-            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
-            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
-            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
-            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
-
+        <p:submenu label="新四经">
+            <p:menuitem value="我的课程" url="myclass.xhtml" />
+            <p:menuitem value="预约教师" url="bookin.xhtml" />
+            <p:menuitem value="免费试听" url="freetry.xhtml" />
         </p:submenu>
+
+        <p:submenu label="诺斯德">
+            <p:menuitem value="AutoIt" url="AutoItIntro.xhtml" />
+            <p:menuitem value="Selenium" url="SeleniumIntro.xhtml" />
+            <p:menuitem value="Java EE" url="JavaEEIntro.xhtml" />
+        </p:submenu>
+
+        <p:submenu label="股票池">
+            <p:menuitem value="增加" url="addTarget.xhtml" />
+            <p:menuitem value="删除" url="deleteTarget.xhtml" />
+            <p:menuitem value="列表" url="listTarget.xhtml" />
+        </p:submenu>
+
+        <p:submenu label="操作记录">
+            <p:menuitem value="买入" url="buyStock.xhtml" />
+            <p:menuitem value="卖出" url="sellStock.xhtml" />
+            <p:menuitem value="持仓" url="listStock.xhtml" />
+        </p:submenu>
+
+        <p:submenu label="留言薄">
+            <p:menuitem value="写留言" url="leaveamessage.xhtml" />
+            <p:menuitem value="发邮件" url="emailtous.xthml" />
+            <p:menuitem value="关于我们" url="aboutus.xthml" />
+        </p:submenu>
+
 
     </p:menu>
 </ui:composition>
