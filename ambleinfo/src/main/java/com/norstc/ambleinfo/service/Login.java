@@ -68,6 +68,9 @@ public class Login implements Serializable {
         return "login";
     }
     
+    public String toIndex(){
+        return "index";
+    }
     /**
      * Creates a new instance of Login
      */

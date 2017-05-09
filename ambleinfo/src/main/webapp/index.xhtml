@@ -11,6 +11,10 @@
         <br />
         <h:link outcome="welcomePrimefaces" value="Primefaces 欢迎使用页" />
         <br/>
+         <h:form>
+            <p>Welcome #{login.user}</p>
+            <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
+        </h:form>
         <h2>This a demo table</h2>
         <h:dataTable value="#{stockBean.stocks}" var="stock" border="2">
             <h:column>
