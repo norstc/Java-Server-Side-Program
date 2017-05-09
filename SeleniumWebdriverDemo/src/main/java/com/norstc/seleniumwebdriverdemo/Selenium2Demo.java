@@ -9,10 +9,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
 
 public class Selenium2Demo {
     public static void main(String[] args){
-        WebDriver driver = new FirefoxDriver();
+        ProfilesIni allProfiles  = new ProfilesIni();
+        FirefoxProfile profile = allProfiles.getProfile("testselenium");
+        WebDriver driver = new FirefoxDriver(profile);
+        
         driver.get("http://www.bing.com");
         WebElement element = driver.findElement(By.name("q"));
         element.sendKeys("新四经");
