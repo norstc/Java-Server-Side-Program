@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,26 +27,36 @@ import java.util.List;
 @SessionScoped
 public class StockBean implements Serializable {
 
+    private List<Stock> stocks;
     
-    public List<Stock> getStocks() throws ClassNotFoundException,SQLException{
-        Connection connect = null;
+    public List<Stock> getStocks(){
+        
+        return stocks;
+    }
+    /**
+     * Creates a new instance of StockBean
+     */
+    public StockBean() {
+        stocks = new ArrayList<Stock>();
+        
+         Connection connect = null;
+         PreparedStatement pstmt = null;
+         ResultSet rs=null;
+         
         String url ="jdbc:mysql://localhost:3306/ambleinfo_db?useUnicode=true&amp;characterEncoding=UTF-8&useSSL=false";
         String username = "root";
         String password = "toor";
         System.out.println("connceted to mysql");
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(StockBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
             connect = (Connection) DriverManager.getConnection(url, username, password);
-            
-        }catch(SQLException ex){
-            System.out.println("in exception");
-            System.out.println(ex.getMessage());
-        }
-        
-        List<Stock> stocks = new ArrayList<Stock>();
-        PreparedStatement pstmt = (PreparedStatement) connect.prepareStatement("select * from ai_tb_stocks");
-        ResultSet rs = pstmt.executeQuery();
-        while (rs.next()){
+             pstmt = (PreparedStatement) connect.prepareStatement("select * from ai_tb_stocks");
+            rs = pstmt.executeQuery();
+         while (rs.next()){
             Stock stock = new Stock();
             stock.setStockId(rs.getInt("stock_id"));
             stock.setStockCode(rs.getString("stock_code"));
@@ -55,18 +67,22 @@ public class StockBean implements Serializable {
             System.out.println("connceted to mysql33" + stock.getStockCode());
             stocks.add(stock);
         }
-         System.out.println("connceted to mysql22");
-        //close connection
-        rs.close();
-        pstmt.close();
-        connect.close();
         
-        return stocks;
-    }
-    /**
-     * Creates a new instance of StockBean
-     */
-    public StockBean() {
+        }catch(SQLException ex){
+            System.out.println("in exception");
+            System.out.println(ex.getMessage());
+        }finally{
+            try {
+                //close connection
+                if(rs!=null) rs.close();
+                if(pstmt!=null) pstmt.close();
+                if(connect!=null) connect.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(StockBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+  
+        
     }
     
 }
