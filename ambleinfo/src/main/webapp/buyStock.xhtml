@@ -9,22 +9,22 @@
         <p>买入股票</p>
         <h:form>
             <h:panelGrid columns="2" cellpadding="5">
-                <h:outputLabel for="username" value="股票代码："/>
-                <p:inputText id="stockCode" value="#{deal.stockCode}" required="true" label="stockCode"/>
+                <h:outputLabel for="stockCode" value="股票代码："/>
+                <p:inputText id="stockCode" value="#{dealBean.stockCode}" required="true" label="stockCode"/>
                 
                
-                <h:outputLabel for="username" value="买入价格："/>
-                <p:inputText id="stockPrice" value="#{deal.stockPrice}" required="true" label="stockPrice"/>
+                <h:outputLabel for="stockPrice" value="买入价格："/>
+                <p:inputText id="stockPrice" value="#{dealBean.stockPrice}" required="true" label="stockPrice"/>
                 
-                <h:outputLabel for="username" value="日期："/>
-                <p:inputText id="dealDate" value="#{deal.dealDate}" required="true" label="date"/>
+                <h:outputLabel for="dealDate" value="日期："/>
+                <p:inputText id="dealDate" value="#{dealBean.dealDate}" required="true" label="date"/>
                 
-                <h:outputLabel for="username" value="时间："/>
-                <p:inputText id="dealTime" value="#{deal.dealTime}" required="true" label="time"/>
+                <h:outputLabel for="dealTime" value="时间："/>
+                <p:inputText id="dealTime" value="#{dealBean.dealTime}" required="true" label="time"/>
                 
                 
                 
-                <h:commandButton action="#{deal.buyStock}" value="买入"></h:commandButton>
+                <h:commandButton action="#{dealBean.buyStock}" value="买入"></h:commandButton>
             </h:panelGrid>
            
         </h:form>
