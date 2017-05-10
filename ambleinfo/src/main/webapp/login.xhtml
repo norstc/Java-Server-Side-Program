@@ -10,15 +10,16 @@
         <p>欢迎</p>
         <h:form>
             <h3>请登录</h3>
-            <h:outputText value="用户名"/>
-            <h:inputText id="username" value="#{login.user}"></h:inputText>
-            <h:message for="username"></h:message>
-            <br/>
-            <h:outputText value="密码"/>
-            <h:inputSecret id="password" value="#{login.pwd}"></h:inputSecret>
-            <h:message for="password"></h:message>
-            <br/>
-            <h:commandButton action="#{login.validateUsernamePassword}" value="Login"></h:commandButton>
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="username" value="用户名："/>
+                <p:inputText id="username" value="#{login.user}" required="true" label="用户名"/>
+                
+                <h:outputLabel for="password" value="密码：" />
+                <p:password id ="password" value="#{login.pwd}" required="true" label="密码"/>
+                
+                <h:commandButton action="#{login.validateUsernamePassword}" value="Login"></h:commandButton>
+            </h:panelGrid>
+           
         </h:form>
         
     </ui:define>
