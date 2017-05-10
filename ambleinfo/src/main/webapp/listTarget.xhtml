@@ -6,35 +6,6 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        <h2>This a demo table</h2>
-        <h:dataTable value="#{stockBean.stocks}" var="stock" border="2">
-            <h:column>
-                <f:facet name="header">Stock ID</f:facet>
-                    #{stock.stockId}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Stock Code</f:facet>
-                    #{stock.stockCode}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Stock Name</f:facet>
-                    #{stock.stockName}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Current Price</f:facet>
-                    #{stock.currentPrice}
-            </h:column>
-            <h:column>
-                <f:facet name="header">AI Price</f:facet>
-                    #{stock.aiPrice}
-            </h:column>
-            <h:column>
-                <f:facet name="header">AI Roi</f:facet>
-                    #{stock.aiRoi}
-            </h:column>
-        </h:dataTable>
-        
-
         <h3>primeface 的表格</h3>
         <p:dataTable var="stock" value="#{stockBean.stocks}">
              <p:column>
