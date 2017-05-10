@@ -1,0 +1,23 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    
+    <ui:define name="content">
+        
+        <h3>预约教师</h3>
+        <p:dataGrid var="teacher" value="#{teacherBean.teachers}" columns="3" rows="12">
+            <p:column>
+                <p:panel header="#{teacher.teacherCode}">
+                    <h:panelGrid columns="1">
+                        <h:outputText value="#{teacher.teacherName}"/>
+                        
+                    </h:panelGrid>
+                </p:panel>
+            </p:column>
+        </p:dataGrid>
+    </ui:define>
+</ui:composition>   

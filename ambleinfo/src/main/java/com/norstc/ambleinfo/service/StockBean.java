@@ -5,9 +5,10 @@
  */
 package com.norstc.ambleinfo.service;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.norstc.ambleinfo.entity.Stock;
+import com.norstc.ambleinfo.util.DataConnect;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -43,17 +44,10 @@ public class StockBean implements Serializable {
          PreparedStatement pstmt = null;
          ResultSet rs=null;
          
-        String url ="jdbc:mysql://localhost:3306/ambleinfo_db?useUnicode=true&amp;characterEncoding=UTF-8&useSSL=false";
-        String username = "root";
-        String password = "toor";
-        System.out.println("connceted to mysql");
+
         try{
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(StockBean.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            connect = (Connection) DriverManager.getConnection(url, username, password);
+            
+            connect = DataConnect.getConnection();
              pstmt = (PreparedStatement) connect.prepareStatement("select * from ai_tb_stocks");
             rs = pstmt.executeQuery();
          while (rs.next()){
@@ -64,7 +58,7 @@ public class StockBean implements Serializable {
             stock.setCurrentPrice(rs.getFloat("current_price"));
             stock.setAiPrice(rs.getFloat("ai_price"));
             stock.setAiRoi(rs.getFloat("ai_roi"));
-            System.out.println("connceted to mysql33" + stock.getStockCode());
+            //System.out.println("connceted to mysql33" + stock.getStockCode());
             stocks.add(stock);
         }
         
@@ -72,14 +66,7 @@ public class StockBean implements Serializable {
             System.out.println("in exception");
             System.out.println(ex.getMessage());
         }finally{
-            try {
-                //close connection
-                if(rs!=null) rs.close();
-                if(pstmt!=null) pstmt.close();
-                if(connect!=null) connect.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(StockBean.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           DataConnect.close(connect);
         }
   
         

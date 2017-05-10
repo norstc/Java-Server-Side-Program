@@ -33,20 +33,16 @@
                     #{stock.aiRoi}
             </h:column>
         </h:dataTable>
-        <h3>使用primefaces</h3>
-        <p:dataGrid var="stock" value="#{stockBean.stocks}" columns="3" rows="12">
-            <p:column>
-                <p:panel header="#{stock.stockCode}">
-                    <h:panelGrid columns="1">
-                        <h:outputText value="#{stock.stockName}"/>
-                        <h:outputText value="预期收益：#{stock.aiRoi}"/>
-                    </h:panelGrid>
-                </p:panel>
-            </p:column>
-        </p:dataGrid>
+        
 
         <h3>primeface 的表格</h3>
         <p:dataTable var="stock" value="#{stockBean.stocks}">
+             <p:column>
+                <f:facet name="header">
+                    <h:outputText value="StockID"/>
+                </f:facet>
+                 <h:outputText value="#{stock.stockId}"/>
+            </p:column>
             <p:column>
                 <f:facet name="header">
                     <h:outputText value="StockCode"/>
@@ -58,6 +54,24 @@
                     <h:outputText value="StockName"/>
                 </f:facet>
                 <h:outputText value="#{stock.stockName}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="CurrentPrice"/>
+                </f:facet>
+                <h:outputText value="#{stock.currentPrice}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="AI price"/>
+                </f:facet>
+                <h:outputText value="#{stock.aiPrice}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="AI Roi"/>
+                </f:facet>
+                <h:outputText value="#{stock.aiRoi}"/>
             </p:column>
         </p:dataTable>                                  
     </ui:define>

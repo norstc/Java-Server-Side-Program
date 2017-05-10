@@ -14,10 +14,13 @@ import java.sql.DriverManager;
  */
 public class DataConnect {
     public static Connection getConnection(){
+        String dbUrl = "jdbc:mysql://localhost:3306/ambleinfo_db?useUnicode=true&characterEncoding=UTF-8&useSSL=false";
+        String dbUser = "root";
+        String dbPwd = "toor";
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ambleinfo_db?useUnicode=true&amp;characterEncoding=UTF-8&useSSL=false","root","toor");
-            System.out.println("connect to db");
+            Connection con = DriverManager.getConnection(dbUrl,dbUser,dbPwd);
+          //  System.out.println("connect to db");
             return con;
         }catch(Exception ex){
             System.out.println("database connect fail: " + ex.getMessage());
