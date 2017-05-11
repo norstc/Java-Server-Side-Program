@@ -16,7 +16,7 @@ import java.sql.SQLException;
  * @author zhangjh
  */
 public class DealDAO {
-    public static boolean buyStock(String stockCode, Float stockPrice, Integer dealType, String dealDate, String dealTime){
+    public static boolean buyStock(String userId,String stockCode, Float buyPrice, Integer buyQuantity,String buyDate, String buyTime){
         if(stockCode.equals("")) return false;
         Connection con = null;
         PreparedStatement ps = null;
@@ -24,12 +24,13 @@ public class DealDAO {
         
         try{
             con = DataConnect.getConnection();
-            ps=con.prepareStatement("insert into ai_tb_deals (deal_code,deal_price,deal_direction,deal_date,deal_time) values (?,?,?,?,?)");
-            ps.setString(1,stockCode);
-            ps.setFloat(2, stockPrice);
-            ps.setInt(3, 1);
-            ps.setString(4, dealDate);
-            ps.setString(5,dealTime);
+            ps=con.prepareStatement("insert into ai_tb_deals (user_id,stock_code,buy_price,buy_quantity,buy_date,buy_time) values (?,?,?,?,?,?)");
+            ps.setString(1,userId);
+            ps.setString(2, stockCode);
+            ps.setFloat(3, buyPrice);
+            ps.setInt(4,buyQuantity);
+            ps.setString(5, buyDate);
+            ps.setString(6,buyTime);
             
             System.out.println(ps.toString());
             rs = ps.executeUpdate();

@@ -6,6 +6,7 @@
 package com.norstc.ambleinfo.service;
 
 import com.norstc.ambleinfo.dao.DealDAO;
+import com.norstc.ambleinfo.dao.UserDAO;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -19,26 +20,32 @@ import java.io.Serializable;
 public class DealBean implements Serializable {
 
     private String stockCode;
-    private Float stockPrice;
-    private String dealDate;
-    private String dealTime;
-    private Integer dealDirection; //1 buy, 0 sell
+    private Float buyPrice;
+    private String buyDate;
+    private String buyTime;
+    private Float sellPrice;
+    private String sellDate;
+    private String sellTime;
+    private String userId;
+    private String dealId;
+    private Integer buyQuantity;
 
-     /**
+    /**
      * Creates a new instance of DealBean
      */
     public DealBean() {
     }
-    
-    public String buyStock(){
-        boolean valid = DealDAO.buyStock(stockCode,stockPrice,dealDirection,dealDate,dealTime);
-        if(valid){
+
+    public String buyStock() {
+        userId = UserDAO.getUserId();
+        boolean valid = DealDAO.buyStock(userId, stockCode, buyPrice, buyQuantity,buyDate, buyTime);
+        if (valid) {
             return "buyOk";
-        }else{
+        } else {
             return "buyFail";
         }
     }
-    
+
     public String getStockCode() {
         return stockCode;
     }
@@ -47,39 +54,77 @@ public class DealBean implements Serializable {
         this.stockCode = stockCode;
     }
 
-    public Float getStockPrice() {
-        return stockPrice;
+    public Float getBuyPrice() {
+        return buyPrice;
     }
 
-    public void setStockPrice(Float stockPrice) {
-        this.stockPrice = stockPrice;
+    public void setBuyPrice(Float buyPrice) {
+        this.buyPrice = buyPrice;
     }
 
-    public String getDealDate() {
-        return dealDate;
+    public String getBuyDate() {
+        return buyDate;
     }
 
-    public void setDealDate(String dealDate) {
-        this.dealDate = dealDate;
+    public void setBuyDate(String buyDate) {
+        this.buyDate = buyDate;
     }
 
-    public String getDealTime() {
-        return dealTime;
+    public String getBuyTime() {
+        return buyTime;
     }
 
-    public void setDealTime(String dealTime) {
-        this.dealTime = dealTime;
+    public void setBuyTime(String buyTime) {
+        this.buyTime = buyTime;
     }
 
-    public Integer getDealType() {
-        return dealDirection;
+    public Float getSellPrice() {
+        return sellPrice;
     }
 
-    public void setDealType(Integer dealType) {
-        this.dealDirection = dealType;
+    public void setSellPrice(Float sellPrice) {
+        this.sellPrice = sellPrice;
     }
-    
-    
-   
+
+    public String getSellDate() {
+        return sellDate;
+    }
+
+    public void setSellDate(String sellDate) {
+        this.sellDate = sellDate;
+    }
+
+    public String getSellTime() {
+        return sellTime;
+    }
+
+    public void setSellTime(String sellTime) {
+        this.sellTime = sellTime;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getDealId() {
+        return dealId;
+    }
+
+    public void setDealId(String dealId) {
+        this.dealId = dealId;
+    }
+
+    public Integer getBuyQuantity() {
+        return buyQuantity;
+    }
+
+    public void setBuyQuantity(Integer buyQuantity) {
+        this.buyQuantity = buyQuantity;
+    }
+
     
 }
