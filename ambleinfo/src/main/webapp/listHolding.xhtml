@@ -1,0 +1,58 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h3>我的持仓</h3>
+        <p:dataTable var="holding" value="#{holdingBean.holdings}">
+             <p:column>
+                <f:facet name="header">
+                    <h:outputText value="dealId"/>
+                </f:facet>
+                 <h:outputText value="#{holding.dealId}"/>
+            </p:column>
+            
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="StockCode"/>
+                </f:facet>
+                <h:outputText value="#{holding.stockCode}"/>
+            </p:column>
+            
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="buyPrice"/>
+                </f:facet>
+                <h:outputText value="#{holding.buyPrice}"/>
+            </p:column>
+            
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="buyQuantity"/>
+                </f:facet>
+                <h:outputText value="#{holding.buyQuantity}"/>
+            </p:column>
+            
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="buyDate"/>
+                </f:facet>
+                <h:outputText value="#{holding.buyDate}"/>
+            </p:column>
+            
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="buyTime"/>
+                </f:facet>
+                <h:outputText value="#{holding.buyTime}"/>
+            </p:column>
+        </p:dataTable>   
+        
+    </ui:define>
+</ui:composition>   
+
+
+
