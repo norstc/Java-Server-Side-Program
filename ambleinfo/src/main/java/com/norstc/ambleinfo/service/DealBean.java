@@ -29,6 +29,9 @@ public class DealBean implements Serializable {
     private String userId;
     private String dealId;
     private Integer buyQuantity;
+    private Integer sellQuantity;
+
+    
 
     /**
      * Creates a new instance of DealBean
@@ -46,6 +49,24 @@ public class DealBean implements Serializable {
         }
     }
 
+    public String sellStock(){
+        userId = UserDAO.getUserId();
+        boolean valid = true;
+        if(valid){
+            return "sellOk";
+        }else{
+            return "sellFail";
+        }
+    }
+    public Integer getSellQuantity() {
+        return sellQuantity;
+    }
+
+    public void setSellQuantity(Integer sellQuantity) {
+        this.sellQuantity = sellQuantity;
+    }
+    
+    
     public String getStockCode() {
         return stockCode;
     }

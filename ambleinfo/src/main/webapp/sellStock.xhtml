@@ -8,50 +8,31 @@
     <ui:define name="content">
         
        <h3>请选择出售的股票，并输入卖出数量和价格</h3>
-        <p:dataTable var="holding" value="#{holdingBean.holdings}">
-            
-             <p:column>
-                <f:facet name="header">
-                    <h:outputText value="dealId"/>
-                </f:facet>
-                 <h:outputText value="#{holding.dealId}"/>
-            </p:column>
-            
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="StockCode"/>
-                </f:facet>
-                <h:outputText value="#{holding.stockCode}"/>
-            </p:column>
-            
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="buyPrice"/>
-                </f:facet>
-                <h:outputText value="#{holding.buyPrice}"/>
-            </p:column>
-            
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="buyQuantity"/>
-                </f:facet>
-                <h:outputText value="#{holding.buyQuantity}"/>
-            </p:column>
-            
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="buyDate"/>
-                </f:facet>
-                <h:outputText value="#{holding.buyDate}"/>
-            </p:column>
-            
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="buyTime"/>
-                </f:facet>
-                <h:outputText value="#{holding.buyTime}"/>
-            </p:column>
-        </p:dataTable> 
+       <h:form>
+           <h:panelGrid columns="2" cellpadding="5">
+               <h:outputLabel for="stockCode" value="股票代码："/>
+               <p:selectOneMenu id="stockCode" value="#{dealBean.stockCode}" required="true" >
+                   <f:selectItem itemLabel="Select one" itemValue=""/>
+                   <f:selectItems value="#{holdingBean.holdings}" var="holding"
+                                  itemLabel="#{holding.dealId}-#{holding.stockCode}-#{holding.buyPrice}-#{holding.buyQuantity}" itemValue="#{holding.dealId}"/>
+               </p:selectOneMenu>
+               
+               <h:outputLabel for="sellPrice" value="卖出价格："/>
+                <p:inputText id="sellPrice" value="#{dealBean.sellPrice}" required="true" label="sellPrice"/>
+                
+                <h:outputLabel for="sellQuantity" value="卖出数量："/>
+                <p:inputText id="sellQuantity" value="#{dealBean.sellQuantity}" required="true" label="sellQuantity"/>
+                
+                
+                <h:outputLabel for="sellDate" value="日期："/>
+                <p:inputText id="sellDate" value="#{dealBean.sellDate}" required="true" label="sellDate"/>
+                
+                <h:outputLabel for="sellTime" value="时间："/>
+                <p:inputText id="sellTime" value="#{dealBean.sellTime}" required="true" label="sellTime"/>
+                
+                <h:commandButton action="#{dealBean.sellStock}" value="卖出"></h:commandButton>
+           </h:panelGrid>
+       </h:form>
         
     </ui:define>
 </ui:composition>   
