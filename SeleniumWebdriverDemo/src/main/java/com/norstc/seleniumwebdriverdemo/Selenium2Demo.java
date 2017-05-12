@@ -14,14 +14,28 @@ import org.openqa.selenium.firefox.internal.ProfilesIni;
 
 public class Selenium2Demo {
     public static void main(String[] args){
+        //target
+        String pomp204 ="http://192.168.1.204/pomp/login.do";
+        String pomp208 = "http://192.168.1.208/pomp/login.do";
+        
+        //user
+        String username="test_jt_3@sh.com";
+        String password="123456";
+        
+        //firefox profile
         ProfilesIni allProfiles  = new ProfilesIni();
         FirefoxProfile profile = allProfiles.getProfile("testselenium");
         WebDriver driver = new FirefoxDriver(profile);
         
-        driver.get("http://www.bing.com");
-        WebElement element = driver.findElement(By.name("q"));
-        element.sendKeys("新四经");
-        element.submit();
+        driver.get(pomp204);
+        WebElement element = null;
+        
+        element = driver.findElement(By.id("name"));
+        element.sendKeys(username);
+        
+        element = driver.findElement(By.id("pwd"));
+        element.sendKeys(password);
+       
         
         System.out.println("Page title is: " + driver.getTitle());
      
