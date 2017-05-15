@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  */
 @Named(value = "login")
 @SessionScoped
-public class Login implements Serializable {
+public class LoginBean implements Serializable {
 
     private String pwd;
     private String msg;
@@ -75,7 +75,7 @@ public class Login implements Serializable {
     /**
      * Creates a new instance of Login
      */
-    public Login() {
+    public LoginBean() {
     }
     
 }
