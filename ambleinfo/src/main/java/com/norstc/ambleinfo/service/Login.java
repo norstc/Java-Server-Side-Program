@@ -5,6 +5,7 @@
  */
 package com.norstc.ambleinfo.service;
 
+import com.norstc.ambleinfo.util.SessionUtils;
 import com.norstc.ambleinfo.dao.LoginDAO;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.norstc.ambleinfo.service;
+package com.norstc.ambleinfo.util;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
