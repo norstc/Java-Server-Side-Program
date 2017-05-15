@@ -17,11 +17,15 @@
                                   itemLabel="#{holding.dealId}-#{holding.stockCode}-#{holding.buyPrice}-#{holding.buyQuantity}" itemValue="#{holding.dealId}"/>
                </p:selectOneMenu>
                
+                <h:outputLabel for="dealId" value="交易Id："/>
+                <p:inputText id="dealId" value="#{dealBean.dealId}" required="true" label="sellPrice"/>
+                
+                
                <h:outputLabel for="sellPrice" value="卖出价格："/>
                 <p:inputText id="sellPrice" value="#{dealBean.sellPrice}" required="true" label="sellPrice"/>
                 
                 <h:outputLabel for="sellQuantity" value="卖出数量："/>
-                <p:inputText id="sellQuantity" value="#{dealBean.sellQuantity}" required="true" label="sellQuantity"/>
+                <p:inputText id="sellQuantity" value="#{dealBean.sellQuantity}"  label="sellQuantity"/>
                 
                 
                 <h:outputLabel for="sellDate" value="日期："/>

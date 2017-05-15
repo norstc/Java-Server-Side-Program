@@ -43,5 +43,32 @@ public class DealDAO {
         }
             
     }
+
+    public static boolean sellStock(String dealId, Float sellPrice, String sellDate, String sellTime) {
+        if(dealId.equals("")) return false;
+        Connection con = null;
+        PreparedStatement ps = null;
+        int rs = 0;
+        
+        try{
+            con = DataConnect.getConnection();
+            ps=con.prepareStatement("update ai_tb_deals set sell_price = ?,sell_date = ? , sell_time = ? where deal_id = ? ");
+            ps.setFloat(1,sellPrice);
+            ps.setString(2, sellDate);
+            ps.setString(3, sellTime);
+            ps.setString(4,dealId);
+
+            
+            System.out.println(ps.toString());
+            rs = ps.executeUpdate();
+            return true;
+        }catch(SQLException ex){
+            System.out.println("sell fail in exception ->" + ex.getMessage());
+            return false;
+        }finally{
+            DataConnect.close(con);
+        }
+        
+    }
     
 }

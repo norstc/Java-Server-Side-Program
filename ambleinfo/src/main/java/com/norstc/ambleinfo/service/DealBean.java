@@ -51,7 +51,7 @@ public class DealBean implements Serializable {
 
     public String sellStock(){
         userId = UserDAO.getUserId();
-        boolean valid = true;
+        boolean valid = DealDAO.sellStock(dealId,sellPrice,sellDate,sellTime);
         if(valid){
             return "sellOk";
         }else{
