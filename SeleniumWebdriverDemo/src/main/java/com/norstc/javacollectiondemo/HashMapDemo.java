@@ -7,6 +7,7 @@ package com.norstc.javacollectiondemo;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.function.BiConsumer;
 
 /**
  *
@@ -32,5 +33,13 @@ public class HashMapDemo {
         }
         System.out.println("sum is : " + sum);
         
+        //java 8 style ， lamda表达式
+        //选择value大于5的key、value对
+        hm.forEach((Object key, Object value) -> {
+            if((Integer)value > 5){
+                System.out.println(key + ":" + value);
+            }
+        });
+
     }
 }
