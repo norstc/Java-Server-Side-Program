@@ -6,8 +6,18 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        <h1>Email </h1>
+        <h1>关于我们</h1>
         <p>Blah blah</p>
-        
+        <p:dataTable var="customer" value="#{customerBean.customers}" widgetVar="customerTable" emptyMessage="No customers found">
+             <p:column headerText="Id">
+                 <h:outputText value="#{customer.customerId}"/>
+             </p:column>
+            <p:column headerText="First Name">
+                <h:outputText value="#{customer.firstName}"/>
+            </p:column>
+            <p:column headerText="Last Name">
+                <h:outputText value="#{customer.lastName}"/>
+            </p:column>
+        </p:dataTable>
     </ui:define>
 </ui:composition>   

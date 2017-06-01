@@ -6,9 +6,12 @@
 package com.norstc.ambleinfo.service;
 
 import com.norstc.ambleinfo.entity.Customer;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
+
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 
@@ -17,8 +20,8 @@ import javax.faces.view.ViewScoped;
  * @author zhangjh
  */
 @Named(value = "customerBean")
-@ViewScoped
-public class CustomerBean {
+@SessionScoped
+public class CustomerBean implements Serializable{
 
     private List<Customer> customers;
  
@@ -32,7 +35,7 @@ public class CustomerBean {
     }
     @PostConstruct
     public void setup()  {
-        List<Customer> customers = new ArrayList<Customer>();
+        customers = new ArrayList<Customer>();
  
         Customer customer1 = new Customer();
         customer1.setFirstName("John");
