@@ -24,7 +24,12 @@ public class SeleniumWithLog4jDemo {
     private static final Logger logger = LogManager.getLogger(SeleniumWithLog4jDemo.class);
     public static void main(String[] args){
         System.out.println("hello log4j2!");
-        logger.trace("entering application");
+        logger.trace("trace log");
+        logger.debug("this is a debug log");
+        logger.info("this is a info log");
+        logger.warn("warn log");
+        logger.error("this is error info from log4j2");
+
          //target
         String target ="http://www.bing.com";
      
