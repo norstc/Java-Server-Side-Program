@@ -26,6 +26,13 @@ public class LoginBean implements Serializable {
     private String msg;
     private String user;
 
+    /**
+     * Creates a new instance of Login
+     */
+    public LoginBean() {
+    }
+    
+    
     public String getPwd() {
         return pwd;
     }
@@ -71,11 +78,6 @@ public class LoginBean implements Serializable {
     
     public String toIndex(){
         return "index";
-    }
-    /**
-     * Creates a new instance of Login
-     */
-    public LoginBean() {
     }
     
 }
