@@ -7,6 +7,10 @@ package com.norstc.springbootdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,16 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author hardy
  */
+@SpringBootApplication
 @RestController
-@EnableAutoConfiguration
-public class HelloSpring {
+public class Application {
     
     @RequestMapping("/")
     String home(){
-        return "Hello world!";
+        return "Hello world! change some";
     }
     public static void main(String[] args){
         System.out.println("hello spring boot!");
-        SpringApplication.run(HelloSpring.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }
