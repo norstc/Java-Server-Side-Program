@@ -1,4 +1,4 @@
-## Selenium dmeo
+## Selenium demo
 
 ### 环境配置：
 * chrome驱动
