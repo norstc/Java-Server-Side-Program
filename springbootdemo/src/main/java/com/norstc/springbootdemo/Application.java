@@ -19,13 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
  * @author hardy
  */
 @SpringBootApplication
-@RestController
 public class Application {
     
-    @RequestMapping("/")
-    String home(){
-        return "Hello world! change some";
-    }
+   
+    
     public static void main(String[] args){
         System.out.println("hello spring boot!");
         SpringApplication.run(Application.class, args);
